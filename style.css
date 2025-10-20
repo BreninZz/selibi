@@ -1,0 +1,193 @@
+/* Reset Básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Paleta de Cores (Verde Esmeralda) */
+    --cor-principal: #009688;     /* Verde Esmeralda (Elegante e Natureza) */
+    --cor-principal-clara: #4DB6AC; /* Tonalidade clara para o hover */
+    
+    --cor-secundaria: #8BC34A;     /* Verde CÍTRICO (Folhas e Grama) */
+    --cor-fundo-claro: #FFFDE7;    /* Creme/Amarelo muito claro (fundo suave) */
+    --cor-texto: #2C3E50;          /* Azul Marinho Escuro, para melhor legibilidade */
+    --cor-destaque: #CDDC39;       /* Verde Limão (para detalhes e cards) */
+    --cor-fundo-escuro: #00796B;   /* Verde Teal Escuro para o footer */
+}
+
+body {
+    font-family: 'Georgia', serif; 
+    line-height: 1.65; /* Aumento para melhor leitura */
+    background-color: var(--cor-fundo-claro);
+    color: var(--cor-texto);
+    /* Adiciona um background sutil que remete a papel/textura antiga */
+    background-image: linear-gradient(to top, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4"><rect width="4" height="4" fill="%23FFFDE7" /><rect x="0" y="0" width="1" height="1" fill="%23F0F0D0" /></svg>');
+}
+
+/* Header */
+header {
+    background-color: var(--cor-principal);
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    border-bottom: 5px solid var(--cor-secundaria); /* Borda destacada */
+}
+
+.header-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+header h1 {
+    font-family: 'Playfair Display', serif; /* Se fosse possível importar fonte */
+    font-size: 3em;
+    margin-bottom: 5px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+/* Novo Elemento: Capa de Livro (Simulação) */
+.book-cover {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--cor-secundaria);
+    border-radius: 50%;
+    margin-bottom: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.icon-orange {
+    font-size: 2.5em; /* Laranja/Ícone em destaque */
+    display: block;
+    animation: pulse 2s infinite alternate; /* Efeito de pulsar no ícone */
+}
+
+@keyframes pulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
+}
+
+/* Navigation */
+nav {
+    background-color: var(--cor-secundaria);
+    text-align: center;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.nav-link {
+    color: var(--cor-texto); /* Texto escuro para melhor contraste no verde claro */
+    text-decoration: none;
+    padding: 8px 18px;
+    margin: 0 5px;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.nav-link:hover, .nav-link.active {
+    background-color: var(--cor-principal-clara); 
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Main Content */
+main {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 15px;
+}
+
+.content-section {
+    background-color: white;
+    padding: 40px;
+    margin-bottom: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid #eee; /* Borda suave */
+}
+
+.content-section h2 {
+    color: var(--cor-principal); 
+    margin-bottom: 25px;
+    border-bottom: 3px solid var(--cor-destaque);
+    padding-bottom: 10px;
+    font-size: 2em;
+    font-style: italic; /* Toque literário */
+}
+
+/* Cards de Informação */
+.info-card {
+    padding: 25px;
+    border-left: 8px solid var(--cor-principal-clara);
+    background-color: #F8FFF0; 
+    border-radius: 10px;
+}
+
+/* Detalhe da Seção Autor */
+.author-bio {
+    border-left-color: var(--cor-principal);
+}
+
+/* Grid de Personagens */
+.characters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Cards levemente maiores */
+    gap: 25px;
+}
+
+.character-card {
+    background-color: var(--cor-destaque); 
+    color: var(--cor-texto);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s;
+}
+
+.character-card:hover {
+    background-color: #DCE775;
+    transform: translateY(-5px) scale(1.02); /* Efeito de destaque ao passar o mouse */
+}
+
+.character-card h3 {
+    color: var(--cor-principal); 
+    margin-bottom: 5px;
+    font-size: 1.4em;
+    text-transform: uppercase;
+}
+
+/* Utilitário para JS */
+.hidden {
+    display: none;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 25px;
+    background-color: var(--cor-fundo-escuro); 
+    color: white;
+    margin-top: 50px;
+    font-size: 0.9em;
+}
+
+/* Responsividade Básica */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 2em;
+    }
+    .nav-link {
+        display: block;
+        margin: 5px 10px;
+    }
+    .content-section {
+        padding: 20px;
+    }
+}
