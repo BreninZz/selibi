@@ -1,193 +1,684 @@
-/* Reset Básico */
+/*
+ * style.css
+ * Versão Final com Melhorias de UX, Acessibilidade e Estilização
+ */
+
+/* Reset */
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
-:root {
-    /* Paleta de Cores (Verde Esmeralda) */
-    --cor-principal: #009688;     /* Verde Esmeralda (Elegante e Natureza) */
-    --cor-principal-clara: #4DB6AC; /* Tonalidade clara para o hover */
-    
-    --cor-secundaria: #8BC34A;     /* Verde CÍTRICO (Folhas e Grama) */
-    --cor-fundo-claro: #FFFDE7;    /* Creme/Amarelo muito claro (fundo suave) */
-    --cor-texto: #2C3E50;          /* Azul Marinho Escuro, para melhor legibilidade */
-    --cor-destaque: #CDDC39;       /* Verde Limão (para detalhes e cards) */
-    --cor-fundo-escuro: #00796B;   /* Verde Teal Escuro para o footer */
-}
-
+html,
 body {
-    font-family: 'Georgia', serif; 
-    line-height: 1.65; /* Aumento para melhor leitura */
-    background-color: var(--cor-fundo-claro);
-    color: var(--cor-texto);
-    /* Adiciona um background sutil que remete a papel/textura antiga */
-    background-image: linear-gradient(to top, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="4" viewBox="0 0 4 4"><rect width="4" height="4" fill="%23FFFDE7" /><rect x="0" y="0" width="1" height="1" fill="%23F0F0D0" /></svg>');
+    height: 100%;
+}
+
+/* Fonte */
+body {
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    -webkit-font-smoothing: antialiased;
+    color: #0f1720;
+    background: linear-gradient(180deg, rgba(252, 250, 247, 0.6) 0%, rgba(240, 246, 245, 0.8) 100%);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* floating page background animated */
+.page-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background: radial-gradient(600px 400px at 10% 20%, rgba(255, 200, 120, 0.06), transparent 10%),
+        radial-gradient(500px 300px at 80% 80%, rgba(140, 200, 160, 0.06), transparent 10%);
+    animation: slowPan 25s linear infinite;
+}
+
+@keyframes slowPan {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        transform: translate3d(-20px, -10px, 0);
+    }
 }
 
 /* Header */
-header {
-    background-color: var(--cor-principal);
-    color: white;
-    padding: 30px 20px;
-    text-align: center;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-    border-bottom: 5px solid var(--cor-secundaria); /* Borda destacada */
+.site-header {
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(6px);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.35));
+    border-bottom: 1px solid rgba(15, 23, 32, 0.06);
+    z-index: 20;
 }
 
-.header-content {
-    max-width: 900px;
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 22px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
-header h1 {
-    font-family: 'Playfair Display', serif; /* Se fosse possível importar fonte */
-    font-size: 3em;
-    margin-bottom: 5px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+.header-actions {
+    display: flex;
+    gap: 10px;
 }
 
-/* Novo Elemento: Capa de Livro (Simulação) */
-.book-cover {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: var(--cor-secundaria);
-    border-radius: 50%;
-    margin-bottom: 15px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+.branding {
+    display: flex;
+    align-items: center;
+    gap: 14px;
 }
 
-.icon-orange {
-    font-size: 2.5em; /* Laranja/Ícone em destaque */
-    display: block;
-    animation: pulse 2s infinite alternate; /* Efeito de pulsar no ícone */
+.logo-svg {
+    width: 56px;
+    height: 56px;
+    filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.08));
 }
 
-@keyframes pulse {
-    from { transform: scale(1); }
-    to { transform: scale(1.1); }
+.titles h1 {
+    font-family: "Playfair Display", serif;
+    font-size: 1.25rem;
+    letter-spacing: 0.2px;
+    color: #0b3b2d;
 }
 
-/* Navigation */
-nav {
-    background-color: var(--cor-secundaria);
-    text-align: center;
-    padding: 10px 0;
+.subtitle {
+    font-size: 0.85rem;
+    color: #475569;
+}
+
+/* Buttons */
+.btn {
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary {
+    background: linear-gradient(90deg, #FFB74D, #FFA726);
+    color: #0f1720;
+    box-shadow: 0 6px 18px rgba(255, 167, 38, 0.18);
+}
+
+/* NOVO: Efeito de pulso para o botão de chat quando ativo */
+.btn-primary.chat-active {
+    animation: pulse-minguinho 1.5s infinite ease-out;
+    box-shadow: 0 8px 30px rgba(255, 167, 38, 0.25);
+}
+
+.btn-ghost {
+    background: transparent;
+    color: #0f1720;
+    padding: 6px 10px;
+    border-radius: 8px;
+}
+
+.btn:focus {
+    outline: 3px solid rgba(255, 183, 77, 0.18);
+}
+
+/* Nav */
+.site-nav {
+    margin-top: 8px;
+    border-bottom: 0;
+    background: transparent;
     position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    top: 72px;
+    z-index: 15;
+}
+
+.nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 10px;
+    padding: 10px 22px;
+    position: relative; 
+}
+
+/* Indicador de Seção */
+.nav-indicator {
+    position: absolute;
+    bottom: 0;
+    height: 3px;
+    background-color: #FFB74D;
+    border-radius: 999px;
+    transition: left 0.3s cubic-bezier(.4, 0, .2, 1), width 0.3s cubic-bezier(.4, 0, .2, 1);
+    z-index: 10;
 }
 
 .nav-link {
-    color: var(--cor-texto); /* Texto escuro para melhor contraste no verde claro */
     text-decoration: none;
-    padding: 8px 18px;
-    margin: 0 5px;
-    transition: background-color 0.3s, color 0.3s;
-    border-radius: 20px;
-    font-weight: bold;
+    color: #0b3b2d;
+    padding: 8px 12px;
+    border-radius: 999px;
+    font-weight: 600;
+    transition: background 0.2s, transform 0.2s;
 }
 
-.nav-link:hover, .nav-link.active {
-    background-color: var(--cor-principal-clara); 
-    color: white;
+.nav-link.active,
+.nav-link:hover {
+    background: rgba(11, 59, 45, 0.08);
     transform: translateY(-2px);
 }
 
-/* Main Content */
-main {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 0 15px;
+/* Container */
+.container {
+    max-width: 1100px;
+    margin: 28px auto;
+    padding: 0 18px 80px;
 }
 
-.content-section {
-    background-color: white;
-    padding: 40px;
-    margin-bottom: 30px;
-    border-radius: 15px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-    border: 1px solid #eee; /* Borda suave */
-}
-
-.content-section h2 {
-    color: var(--cor-principal); 
-    margin-bottom: 25px;
-    border-bottom: 3px solid var(--cor-destaque);
-    padding-bottom: 10px;
-    font-size: 2em;
-    font-style: italic; /* Toque literário */
-}
-
-/* Cards de Informação */
-.info-card {
-    padding: 25px;
-    border-left: 8px solid var(--cor-principal-clara);
-    background-color: #F8FFF0; 
-    border-radius: 10px;
-}
-
-/* Detalhe da Seção Autor */
-.author-bio {
-    border-left-color: var(--cor-principal);
-}
-
-/* Grid de Personagens */
-.characters-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Cards levemente maiores */
-    gap: 25px;
-}
-
-.character-card {
-    background-color: var(--cor-destaque); 
-    color: var(--cor-texto);
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s;
-}
-
-.character-card:hover {
-    background-color: #DCE775;
-    transform: translateY(-5px) scale(1.02); /* Efeito de destaque ao passar o mouse */
-}
-
-.character-card h3 {
-    color: var(--cor-principal); 
-    margin-bottom: 5px;
-    font-size: 1.4em;
-    text-transform: uppercase;
-}
-
-/* Utilitário para JS */
-.hidden {
+/* Card / Content - Lógica de Visualização por Clique */
+.content {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(250, 250, 250, 0.92));
+    border-radius: 16px;
+    padding: 26px;
+    margin-bottom: 22px;
+    box-shadow: 0 10px 30px rgba(11, 59, 45, 0.04);
+    border: 1px solid rgba(11, 59, 45, 0.03);
+    
     display: none;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
 }
 
-/* Footer */
-footer {
+.content.active-section {
+    display: block; 
+    opacity: 1;    
+}
+
+.card {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+}
+
+.card-left {
+    flex: 1 1 60%;
+}
+
+.card-right {
+    flex: 0 0 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 1.35rem;
+    color: #0b3b2d;
+    margin-bottom: 10px;
+}
+
+p {
+    color: #263238;
+    line-height: 1.56;
+}
+
+/* art-plate */
+.art-plate {
+    position: relative;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.floating-orb {
+    font-size: 44px;
+    transform: translateY(0);
+    animation: bob 3s ease-in-out infinite;
+    transition: filter 0.3s;
+}
+
+/* NOVO: Animação de Pulsar (Reage ao chat) */
+@keyframes pulse-minguinho {
+    0% { transform: scale(1.0); box-shadow: 0 0 0 0 rgba(255, 183, 77, 0.4); }
+    70% { transform: scale(1.05); box-shadow: 0 0 0 12px rgba(255, 183, 77, 0); }
+    100% { transform: scale(1.0); box-shadow: 0 0 0 0 rgba(255, 183, 77, 0); }
+}
+
+.floating-orb.listening {
+    animation: pulse-minguinho 1.5s infinite ease-out, bob 3s ease-in-out infinite; 
+    filter: drop-shadow(0 0 10px rgba(255, 183, 77, 0.9)); 
+}
+
+
+@keyframes bob {
+    0% {
+        transform: translateY(0)
+    }
+
+    50% {
+        transform: translateY(-12px)
+    }
+
+    100% {
+        transform: translateY(0)
+    }
+}
+
+/* Characters grid / Feelings Grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+/* NOVO: Botão de Sentimentos */
+.feeling-btn {
+    padding: 18px;
+    border-radius: 12px;
+    background: #f4f6f9;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, opacity 0.3s;
+    border: 1px solid rgba(11, 59, 45, 0.08);
     text-align: center;
-    padding: 25px;
-    background-color: var(--cor-fundo-escuro); 
-    color: white;
-    margin-top: 50px;
-    font-size: 0.9em;
+}
+.feeling-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(11, 59, 45, 0.1);
 }
 
-/* Responsividade Básica */
-@media (max-width: 600px) {
-    header h1 {
-        font-size: 2em;
+/* O restante do CSS (Characters, Quiz, Footer, Modal, Dark Mode) permanece igual ou foi ligeiramente modificado
+para incorporar as novas regras de animação/botões. */
+
+/* Character Card (mantido) */
+.character-card {
+    perspective: 1000px;
+    height: 150px;
+}
+
+.flip {
+    position: relative;
+    cursor: pointer;
+}
+
+.card-face {
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    backface-visibility: hidden;
+    transition: transform 0.6s cubic-bezier(.2, .9, .3, 1), box-shadow 0.4s;
+    box-shadow: 0 6px 20px rgba(2, 6, 23, 0.06);
+}
+
+.card-front {
+    background: linear-gradient(180deg, #FFF8E1, #FFF3E0);
+    color: #0b3b2d;
+    transform: rotateY(0deg);
+}
+
+.card-back {
+    background: linear-gradient(180deg, #E8F5E9, #F1F8E9);
+    color: #0b3b2d;
+    transform: rotateY(180deg);
+    padding: 16px;
+}
+
+.flip:hover .card-front {
+    transform: rotateY(-180deg);
+    box-shadow: 0 14px 40px rgba(2, 6, 23, 0.15);
+}
+
+.flip:hover .card-back {
+    transform: rotateY(0deg);
+    box-shadow: 0 14px 40px rgba(2, 6, 23, 0.15);
+}
+
+/* Quiz area (mantido) */
+.quiz-area {
+    margin-top: 14px;
+}
+
+.question-box {
+    font-weight: 700;
+    margin-bottom: 12px;
+    font-size: 1.05rem;
+}
+
+.answers-box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.answer-btn {
+    padding: 12px 14px;
+    border-radius: 10px;
+    background: #fff;
+    border: 1px solid rgba(11, 59, 45, 0.06);
+    cursor: pointer;
+    text-align: left;
+    font-weight: 600;
+    transition: border-color 0.3s, box-shadow 0.3s, transform 0.2s;
+}
+
+.answer-btn:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(11, 59, 45, 0.06);
+}
+
+.answer-btn:disabled {
+    cursor: default;
+    opacity: 0.8;
+}
+
+/* Quiz Feedback Cores */
+.answer-btn.correct {
+    border-color: #69b578; /* Verde */
+    box-shadow: 0 6px 18px rgba(105,181,120,0.2);
+}
+
+.answer-btn.incorrect {
+    border-color: #ef9a9a; /* Vermelho */
+}
+
+/* Estilo da Caixa de Explicações (reutilizado para FeelingResponse) */
+.explanation-box {
+    margin: 10px 0 20px;
+    padding: 12px;
+    border-radius: 10px;
+    background: #f0fdf4; /* Verde bem claro */
+    border: 1px solid #dcfce7;
+    font-size: 0.95rem;
+    color: #166534;
+}
+
+.explanation-box strong {
+    color: #0b3b2d;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.quiz-controls {
+    margin-top: 14px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+/* result */
+.result-box {
+    margin-top: 14px;
+    padding: 12px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #FFECB3, #FFF8E1);
+    font-weight: 700;
+}
+
+/* Footer (mantido) */
+.site-footer {
+    padding: 20px;
+    text-align: center;
+    color: #546e7a;
+    margin-top: 30px;
+}
+
+/* Modal chat (mantido) */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(3, 6, 10, 0.45);
+    z-index: 40;
+}
+
+.modal {
+    position: fixed;
+    inset: auto;
+    right: 20px;
+    bottom: 20px;
+    z-index: 50;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.modal-panel {
+    width: 360px;
+    max-width: calc(100% - 44px);
+    border-radius: 12px;
+    overflow: hidden;
+    background: linear-gradient(180deg, #ffffff, #f9fff8);
+    box-shadow: 0 20px 60px rgba(2, 6, 23, 0.25);
+    border: 1px solid rgba(11, 59, 45, 0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 14px;
+    border-bottom: 1px solid rgba(11, 59, 45, 0.04);
+}
+
+.chat-messages {
+    padding: 12px;
+    height: 260px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0));
+}
+
+.chat-bubble {
+    max-width: 78%;
+    padding: 10px 12px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.bubble-user {
+    background: linear-gradient(90deg, #fff3e0, #fff8e1);
+    align-self: flex-end;
+    border: 1px solid rgba(11, 59, 45, 0.03);
+}
+
+.bubble-minguinho {
+    background: linear-gradient(90deg, #E8F5E9, #F1F8E9);
+    align-self: flex-start;
+    border: 1px solid rgba(11, 59, 45, 0.03);
+}
+
+.chat-form {
+    display: flex;
+    padding: 10px;
+    gap: 8px;
+    border-top: 1px solid rgba(11, 59, 45, 0.04);
+}
+
+.chat-form input {
+    flex: 1;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(11, 59, 45, 0.06);
+}
+
+.chat-form button {
+    padding: 8px 12px;
+    border-radius: 10px;
+}
+
+/* typing indicator */
+.typing-indicator {
+    padding: 8px 14px;
+    color: #6b7280;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+/* small utilities */
+.muted {
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+.small {
+    font-size: 0.78rem;
+}
+
+/* Hidden */
+.hidden {
+    display: none !important;
+}
+
+/* Dark Mode (ajustes para os novos elementos) */
+body.dark {
+    color: #e6eef0;
+    background: linear-gradient(180deg, #071018, #071622);
+}
+
+body.dark .page-bg {
+    background: radial-gradient(600px 400px at 10% 20%, rgba(255, 180, 100, 0.02), transparent 10%), radial-gradient(500px 300px at 80% 80%, rgba(80, 150, 120, 0.02), transparent 10%);
+}
+
+body.dark .content {
+    background: linear-gradient(180deg, #061018, #08181d);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    box-shadow: 0 10px 30px rgba(2, 6, 23, 0.6);
+}
+
+body.dark h2 {
+    color: #bfe6cf;
+}
+
+body.dark p,
+body.dark .muted {
+    color: #cfe7dd;
+}
+
+body.dark .explanation-box {
+    background: #0f172a; 
+    border-color: #1e3a8a;
+    color: #bfdbfe;
+}
+body.dark .explanation-box strong {
+    color: #e6f7ee;
+}
+
+body.dark .card-front {
+    background: linear-gradient(180deg, #09302a, #04221a);
+    color: #cfe7dd;
+}
+
+body.dark .card-back {
+    background: linear-gradient(180deg, #0b2420, #06201b);
+    color: #cfe7dd;
+}
+
+body.dark .nav-link,
+body.dark .titles h1 {
+    color: #e6f7ee;
+}
+body.dark .nav-indicator {
+    background-color: #bfe6cf;
+}
+
+
+body.dark .answer-btn {
+    background: #09202a;
+    color: #e6f7ee;
+}
+
+/* Novo: Botão de sentimento no Dark Mode */
+body.dark .feeling-btn {
+    background: #09202a;
+    color: #e6f7ee;
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark .answer-btn.correct {
+    border-color: #69b578;
+}
+
+body.dark .answer-btn.incorrect {
+    border-color: #ef9a9a;
+}
+
+/* responsiveness (mantido) */
+@media (max-width: 800px) {
+    .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
     }
-    .nav-link {
-        display: block;
-        margin: 5px 10px;
+
+    .card {
+        flex-direction: column;
     }
-    .content-section {
-        padding: 20px;
+
+    .modal-panel {
+        width: 92%;
+        position: fixed;
+        left: 4%;
+        right: 4%;
+        bottom: 20px;
+    }
+}
+
+
+/* Acessibilidade: Prefere Movimento Reduzido (mantido) */
+@media (prefers-reduced-motion: reduce) {
+    .floating-orb {
+        animation: none !important;
+        transform: none !important;
+    }
+    
+    .nav-indicator {
+        transition: none !important;
+    }
+
+    .content {
+        transition: none !important;
+        opacity: 1 !important;
+    }
+    
+    .page-bg {
+        animation: none !important;
+        transform: none !important;
+    }
+
+    .card-face {
+        transition: none !important;
+    }
+    .flip:hover .card-front {
+        transform: rotateY(0deg) !important;
+    }
+    .flip:hover .card-back {
+        transform: rotateY(0deg) !important;
+    }
+    
+    .answer-btn:hover:not(:disabled),
+    .nav-link:hover,
+    .feeling-btn:hover { /* Adicionado o botão de sentimento */
+        transform: none !important;
+        box-shadow: none !important;
     }
 }

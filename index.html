@@ -1,88 +1,165 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Pé de Laranja Lima</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Meu Pé de Laranja Lima — Versão Final</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <div class="book-cover">
-                <span class="icon-orange">🍊</span>
+    <div class="page-bg"></div>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="branding">
+                <svg viewBox="0 0 64 64" class="logo-svg" aria-hidden="true"><g fill="#FFB74D"><circle cx="22" cy="24" r="3.6"/><circle cx="34" cy="18" r="3.6"/><circle cx="44" cy="26" r="3.6"/></g></svg>
+                <div class="titles">
+                    <h1>Meu Pé de Laranja Lima</h1>
+                    <p class="subtitle">Experiência interativa — Minguinho Assistente</p>
+                </div>
             </div>
-            <h1>Meu Pé de Laranja Lima</h1>
-            <p>Um clássico de José Mauro de Vasconcelos</p>
+
+            <div class="header-actions">
+                <button id="themeToggle" class="btn btn-ghost" aria-pressed="false" title="Alternar tema">🌙</button>
+                <button id="voiceToggle" class="btn btn-ghost" aria-pressed="false" title="Narrar respostas">🔊</button>
+                <button id="openChatBtn" class="btn btn-primary">🍊 Fale com o Minguinho</button>
+            </div>
         </div>
     </header>
 
-    <nav>
-        <a href="#livro" class="nav-link active">O Livro</a>
-        <a href="#sinopse" class="nav-link">Sinopse</a>
-        <a href="#personagens" class="nav-link">Personagens</a>
-        <a href="#autor" class="nav-link">O Autor</a>
+    <nav class="site-nav">
+        <div class="nav-inner">
+            <a href="#livro" class="nav-link">O Livro</a>
+            <a href="#sinopse" class="nav-link">Sinopse</a>
+            <a href="#personagens" class="nav-link">Personagens</a>
+            <a href="#autor" class="nav-link">O Autor</a>
+            <a href="#sentimentos" class="nav-link">Sentimentos</a> <a href="#quiz" class="nav-link">Quiz</a>
+            <div id="navIndicator" class="nav-indicator"></div>
+        </div>
     </nav>
 
-    <main>
-        <section id="livro" class="content-section">
-            <h2>O Livro</h2>
-            <div class="info-card">
-                <p>Publicado em **1968**, "Meu Pé de Laranja Lima" é a obra mais aclamada do escritor brasileiro **José Mauro de Vasconcelos**. Trata-se de um romance infantojuvenil de caráter fortemente autobiográfico, que cativou leitores de diversas gerações e foi traduzido para mais de 50 idiomas. O livro se tornou um dos maiores sucessos da literatura nacional, sendo adaptado para cinema, televisão e teatro.</p>
-                <p>A história se passa no bairro modesto de Bangu, na zona norte do Rio de Janeiro, explorando a infância, a pobreza e a necessidade de afeto.</p>
+    <main id="mainContent" class="container">
+        
+        <section id="livro" class="content card">
+            <div class="card-left">
+                <h2>O Livro</h2>
+                <p><strong>Meu Pé de Laranja Lima</strong> (1968) é uma obra autobiográfica de José Mauro de Vasconcelos. Aqui exploramos o livro com design moderno e um assistente carinhoso — o Minguinho.</p>
+                <p class="muted">Tema: infância, afeto, imaginação.</p>
+            </div>
+            <div class="card-right art-plate">
+                <div id="floatingOrb" class="floating-orb">🍊</div> 
             </div>
         </section>
 
-        <section id="sinopse" class="content-section hidden">
+        <section id="sinopse" class="content card">
             <h2>Sinopse</h2>
-            <div class="info-card">
-                <p>A narrativa acompanha a vida de **Zezé**, um menino de apenas seis anos, esperto, precoce e com uma imaginação extraordinária, mas que vive em uma família pobre e desestruturada. Por ser muito traquinas e incompreendido, Zezé sofre constantemente com a violência e a falta de afeto em casa.</p>
-                <p>Seu refúgio é o mundo da fantasia, onde ele encontra um amigo e confidente em um modesto pé de laranja lima, que ele batiza de **Minguinho** (ou Xururuca). A amizade com o Português **Manuel Valadares**, um senhor rico e solitário, também se torna um porto seguro, até que uma tragédia muda o rumo da vida de Zezé, forçando-o a crescer e a lidar com a dor muito cedo. A obra é um retrato pungente da dor de crescer e da busca por ternura.</p>
+            <p>Zezé, às vezes traquinas e sempre sonhador, encontra no pé de laranja lima — o Minguinho — um amigo que escuta e protege. A história acompanha sua busca por ternura e a descoberta precoce das dores da vida.</p>
+            <button id="openExcerptModal" class="btn btn-primary" style="margin-top: 18px;">📖 Descubra um Trecho</button>
+        </section>
+
+        <section id="personagens" class="content">
+            <h2>Personagens</h2>
+            <div class="grid characters-grid">
+                <article class="character-card flip">
+                    <div class="card-face card-front"><h3>Zezé</h3><p>Protagonista: curioso e sensível.</p></div>
+                    <div class="card-face card-back"><p>“Descobridor das coisas” — tão travesso quanto terno.</p></div>
+                </article>
+                <article class="character-card flip">
+                    <div class="card-face card-front"><h3>Minguinho</h3><p>Pé de laranja lima — refúgio imaginário.</p></div>
+                    <div class="card-face card-back"><p>Confidente que simboliza esperança.</p></div>
+                </article>
+                <article class="character-card flip">
+                    <div class="card-face card-front"><h3>Portuga</h3><p>Manuel Valadares — amigo e figura paterna.</p></div>
+                    <div class="card-face card-back"><p>Oferece cuidado e afeto onde falta.</p></div>
+                </article>
+                <article class="character-card flip">
+                    <div class="card-face card-front"><h3>Glória & Luís</h3><p>Família — amor misturado com desafios.</p></div>
+                    <div class="card-face card-back"><p>Fragmentos que constroem a infância de Zezé.</p></div>
+                </article>
             </div>
         </section>
 
-        <section id="personagens" class="content-section hidden">
-            <h2>Personagens Principais</h2>
-            <div class="characters-grid">
-                <div class="character-card">
-                    <h3>Zezé</h3>
-                    <p>O protagonista. Um menino de 6 anos, sensível, criativo e muito levado, que busca amor em um mundo hostil. É o "descobridor das coisas".</p>
-                </div>
-                <div class="character-card">
-                    <h3>Minguinho (Xururuca)</h3>
-                    <p>O pé de laranja lima, confidente e amigo imaginário de Zezé. Simboliza a inocência e o mundo de fantasia da criança.</p>
-                </div>
-                <div class="character-card">
-                    <h3>Manuel Valadares (Portuga)</h3>
-                    <p>Um senhor português, rico e bondoso, que se torna o melhor amigo, mentor e a figura paterna que Zezé nunca teve.</p>
-                </div>
-                <div class="character-card">
-                    <h3>Glória (Godoia)</h3>
-                    <p>Uma das irmãs de Zezé, que tenta protegê-lo e é uma das poucas fontes de afeto e cuidado na família.</p>
-                </div>
-                <div class="character-card">
-                    <h3>Luís (Rei Luís)</h3>
-                    <p>Irmão caçula de Zezé, por quem o protagonista sente grande carinho e responsabilidade, sendo seu principal companheiro de casa.</p>
-                </div>
-                <div class="character-card">
-                    <h3>Totóca</h3>
-                    <p>Irmão mais velho de Zezé, que tenta ensiná-lo as "regras da rua" e as tristezas da vida adulta.</p>
-                </div>
-            </div>
+        <section id="autor" class="content card">
+            <h2>O Autor</h2>
+            <p>José Mauro de Vasconcelos (1920–1981) teve uma vida cheia de experiências que alimentaram sua escrita sensível. A infância é fonte constante de sua obra.</p>
         </section>
         
-        <section id="autor" class="content-section hidden">
-            <h2>O Autor: José Mauro de Vasconcelos</h2>
-            <div class="info-card author-bio">
-                <p>Nascido em Bangu, Rio de Janeiro, em 1920, **José Mauro de Vasconcelos** foi um dos mais importantes escritores brasileiros. Sua vida foi tão rica quanto seus personagens: foi boxeador, professor, pescador e ator.</p>
-                <p>Sua experiência de vida, especialmente a infância, é a base de muitas de suas obras. "Meu Pé de Laranja Lima" é o mais famoso de seus livros e faz parte de uma trilogia informal com "Vazante" e "Vamos Aquecer o Sol", continuando a saga de Zezé.</p>
+        <section id="sentimentos" class="content card">
+            <h2>Painel dos Sentimentos</h2>
+            <p>O Minguinho te escuta. Clique no sentimento que você deseja "plantar" ou compartilhar hoje. Ele terá uma resposta para você.</p>
+            <div class="grid characters-grid" id="feelingsGrid">
+                <button class="feeling-btn" data-feeling="Tristeza">💧 Tristeza</button>
+                <button class="feeling-btn" data-feeling="Alegria">☀️ Alegria</button>
+                <button class="feeling-btn" data-feeling="Medo">☁️ Medo</button>
+                <button class="feeling-btn" data-feeling="Esperança">🌱 Esperança</button>
+            </div>
+            <div id="feelingResponse" class="explanation-box hidden" style="margin-top: 20px;"></div>
+        </section>
+        <section id="quiz" class="content card">
+            <h2>Quiz Literário</h2>
+            <p>Teste rápido: responda 3 perguntas sobre o livro.</p>
+            <div id="quizArea" class="quiz-area">
+                <div id="questionBox" class="question-box"></div>
+                <div id="explanationBox" class="explanation-box hidden"></div> 
+                <div id="answersBox" class="answers-box"></div>
+                <div class="quiz-controls">
+                    <button id="nextBtn" class="btn btn-primary" disabled>Próxima</button>
+                    <button id="explainBtn" class="btn btn-ghost hidden">Ver Explicações</button> 
+                    <button id="restartBtn" class="btn btn-ghost hidden">Refazer</button>
+                </div>
+                <div id="resultBox" class="result-box hidden"></div>
             </div>
         </section>
     </main>
 
-    <footer>
-        <p>Desenvolvido com carinho | &copy; 2025 - Site informativo sobre Meu Pé de Laranja Lima</p>
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p>Versão final — Minguinho Assistente 🍊 • © 2025</p>
+        </div>
     </footer>
+
+    <div id="chatModal" class="modal hidden" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="modal-panel" role="document">
+            <header class="modal-header">
+                <div>
+                    <strong>Minguinho</strong>
+                    <div class="muted small">Seu assistente literário e amigo</div>
+                </div>
+                <div style="display:flex;gap:8px;align-items:center">
+                    <button id="voiceSpeakToggle" class="btn btn-ghost" title="Narrar respostas">🔉</button>
+                    <button id="closeChatBtn" class="btn btn-ghost" aria-label="Fechar chat">✖</button>
+                </div>
+            </header>
+
+            <div id="chatMessages" class="chat-messages" aria-live="polite"></div>
+
+            <div id="typingIndicator" class="typing-indicator hidden">Minguinho está escrevendo...</div>
+
+            <form id="chatForm" class="chat-form" autocomplete="off">
+                <input id="chatInput" type="text" placeholder="Diga algo para o Minguinho..." aria-label="Mensagem ao Minguinho" />
+                <button class="btn btn-primary" type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+    
+    <div id="excerptModal" class="modal hidden" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="modal-panel" role="document" style="max-width: 500px; height: auto;">
+            <header class="modal-header">
+                <strong>Trecho de 'Meu Pé de Laranja Lima'</strong>
+                <button id="closeExcerptModalBtn" class="btn btn-ghost" aria-label="Fechar">✖</button>
+            </header>
+            <div class="modal-content" style="padding: 20px; text-align: left;">
+                <p id="excerptContent" style="font-family: 'Playfair Display', serif; font-size: 1.1rem; line-height: 1.7; font-style: italic;"></p>
+                <p class="muted small" style="margin-top: 15px;">— José Mauro de Vasconcelos</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="overlay" class="overlay hidden"></div>
 
     <script src="script.js"></script>
 </body>
