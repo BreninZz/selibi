@@ -213,10 +213,7 @@ body {
 }
 
 .card-right {
-    flex: 0 0 180px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    max-width: 200px;
 }
 
 h2 {
@@ -681,4 +678,5 @@ body.dark .answer-btn.incorrect {
         transform: none !important;
         box-shadow: none !important;
     }
+    
 }
